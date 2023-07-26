@@ -11,3 +11,5 @@ hsh main.c shell.c
 ($)
 ($) exit
 $
+
+if you have any suggestions please create a pull request
