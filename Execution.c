@@ -29,5 +29,5 @@ void execution(char **argv, char *act)
 	if (my_pid > 0)
 	{
 		wait(&status);
-      	}
+	}
 }
