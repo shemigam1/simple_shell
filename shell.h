@@ -1,15 +1,25 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H
+#define _SHELL_H
 
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/wait.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
-#include <unistd.h>
+#include <errno.h>
 
-char **tokenize(char *line, int line_count);
-void exec(char **argv);
+extern char **environ;
+extern int errno;
+
+void execution(char **argv, char *act);
+int **token(char *str);
+void execmd(char **argv);
+char *get_loc(char *cmd);
+char *str_cat(char *dest, char *src);
+int str_len(char *str);
+char *str_cpy(char *dest, char *src);
+char *str_dup(char *str);
 
 #endif

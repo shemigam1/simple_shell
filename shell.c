@@ -1,65 +1,39 @@
 #include "shell.h"
 
 /**
- * main - interactive shell
- * @ac: int
- * @av: arr of str
- * Return: 0
+ * main - Entry point
+ * @ac: argument count
+ * @av: Argumenr vector(array)
+ *
+ * Description: A program that prints its arguments
+ *
+ * Return: Always 0(Success)
  */
 
-int main(void)
+int main(int ac, char **av)
 {
-	char *prompt = "#cisfun$";
-	int status;
-	pid_t child_pid;
-	size_t i = 0;
-	int a = 0;
-	ssize_t cmd_count;
-	char *line = NULL;
-	char *token;
-	char **argv;
+	char *space = NULL;
+	size_t buff = 0;
+	(void)ac;
+	(void)av;
 
 	while (1)
 	{
-		printf("%s ", prompt);
-		cmd_count = getline(&line, &i, stdin);
+		if (isatty(STDIN_FILENO) == 1)
+		{
+			write(STDOUT_FILENO, "$ ", str_len("$ "));
+		}
+		if (getline(&space, &buff, stdin) == -1)
+		{
+			free(space);
+			if (isatty(STDIN_FILENO) == 1)
+			{
+				write(STDOUT_FILENO, "\n", str_len("\n"));
+			}
+			return (0);
+		}
 
-		if ((strcmp(line, "exit\n") == 0) || (cmd_count == -1))
-		{
-			printf("Exiting shell...\n");
-			free(line);
-			break;
-		}
-		line[strcspn(line, "\n")] = '\0';
-		argv = tokenize(line, cmd_count);
-		/*while (argv[a] != NULL)
-		{
-			printf("%s\n", argv[a]);
-			a++;
-		}*/
-		if (argv != NULL)
-		{
-			child_pid = fork();
-			if (child_pid == -1)
-			{
-				perror("Error: ");
-			}
-			else if (child_pid == 0)
-			{
-				exec(argv);
-			}
-			else
-			{
-				wait(&status);
-			}
-		}
+		token(space);
 	}
-	free(line);
-	
-	for (a = 0; argv != NULL && argv[a]; a++)
-	{
-		free(argv[a]);
-	}
-	free(argv);
 	return (0);
 }
