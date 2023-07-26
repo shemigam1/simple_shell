@@ -1,7 +1,8 @@
 #include "shell.h"
 
 /**
- * main - execve example
+ * execmd - executes a command
+ * @argv: argument vector
  *
  * Return: Always 0.
  */
@@ -14,7 +15,7 @@ void execmd(char **argv)
 	{
 		/*printf("%d\n",argv[0][0]);*/
 
-		if (argv[0][0] == '.'|| act_cmd[0] == '/')
+		if (argv[0][0] == '.' || act_cmd[0] == '/')
 		{
 			if (access(act_cmd, F_OK) != 0)
 			{
