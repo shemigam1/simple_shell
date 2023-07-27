@@ -15,6 +15,8 @@ void execmd(char **argv, char *program_name, int count)
 
 	if (argv != NULL)
 	{
+		/*printf("%d\n",argv[0][0]);*/
+
 		if (argv[0][0] == '.' || act_cmd[0] == '/')
 		{
 			if (access(act_cmd, F_OK) != 0)
@@ -35,12 +37,9 @@ void execmd(char **argv, char *program_name, int count)
 			act_cmd = get_loc(argv[0]);
 			if (act_cmd == NULL)
 			{
-				fprintf(stderr, "%s: %d: %s: not found\n", program_name, count, argv[0]);
-				exitcode = 127;
-				return;
+				perror("Command Not found\n");
 			}
 		}
 		execution(argv, act_cmd);
-		free(act_cmd);
 	}
 }

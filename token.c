@@ -21,6 +21,7 @@ int **token(char *str, char *program_name, int count)
 	{
 		exit(0);
 	}
+
 	segment = strtok(copy, separat);
 	while (segment)
 	{
@@ -28,17 +29,19 @@ int **token(char *str, char *program_name, int count)
 		segment = strtok(NULL, separat);
 	}
 	num_seg++;
+
 	argv = malloc(sizeof(char *) * num_seg);
 	segment = strtok(str, separat);
+
 	while (segment)
 	{
 		argv[ind++] = strdup(segment);
 		segment = strtok(NULL, separat);
 	}
 	argv[ind] = NULL;
+
 	execmd(argv, program_name, count);
-	if (argv[0][0] == '/')
-		return (0);
+	/*printf("segment\n");*/
 	for (ind = 0; argv[ind]; ind++)
 	{
 		free(argv[ind]);
