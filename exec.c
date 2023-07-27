@@ -22,11 +22,13 @@ void execmd(char **argv, char *program_name, int count)
 			if (access(act_cmd, F_OK) != 0)
 			{
 				fprintf(stderr, "%s: %d: %s: not found\n", program_name, count, argv[0]);
+				exitcode = 127;
 				return;
 			}
 			if (access(act_cmd, F_OK) != 0 || access(act_cmd, X_OK) != 0)
 			{
 				fprintf(stderr, "%s: %d: %s: not found\n", program_name, count, argv[0]);
+				exitcode = 127;
 				return;
 			}
 		}

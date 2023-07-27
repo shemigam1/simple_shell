@@ -11,7 +11,7 @@
 #include <errno.h>
 
 extern char **environ;
-extern int errno;
+extern int exitcode;
 
 void execution(char **argv, char *act);
 int **token(char *str, char *program, int count);

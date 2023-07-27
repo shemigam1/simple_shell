@@ -23,11 +23,13 @@ void execution(char **argv, char *act)
 	if (my_pid == 0)
 	{
 		execve(act, argv, environ);
-		exit(1);
+		exit(errno);
 	}
 
 	if (my_pid > 0)
 	{
 		wait(&status);
+		if (WIFEXITED(status))
+			errno = WEXITSTATUS(status);
 	}
 }

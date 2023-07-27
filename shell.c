@@ -1,5 +1,8 @@
 #include "shell.h"
 
+void execution(char **argv, char *act);
+int exitcode = 0;
+
 /**
  * main - Entry point
  * @ac: argument count
@@ -31,10 +34,10 @@ int main(int ac, char **av)
 			{
 				write(STDOUT_FILENO, "\n", str_len("\n"));
 			}
-			return (0);
+			return (exitcode);
 		}
 
 		token(space, av[0], count);
 	}
-	return (0);
+	return (exitcode);
 }
