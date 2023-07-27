@@ -14,11 +14,12 @@ int main(int ac, char **av)
 {
 	char *space = NULL;
 	size_t buff = 0;
+	int count = 0;
 	(void)ac;
-	(void)av;
 
 	while (1)
 	{
+		count++;
 		if (isatty(STDIN_FILENO) == 1)
 		{
 			write(STDOUT_FILENO, "$ ", str_len("$ "));
@@ -33,7 +34,7 @@ int main(int ac, char **av)
 			return (0);
 		}
 
-		token(space);
+		token(space, av[0], count);
 	}
 	return (0);
 }

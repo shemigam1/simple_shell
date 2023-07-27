@@ -3,13 +3,15 @@
 /**
  * token - creates tokens
  * @str: pointer to string
+ * @program_name: The name for the shelll
+ * @count: The number of commands executed
  *
  * Description: A function that tokenizes an array
  *
  * Return: ...
  */
 
-int **token(char *str)
+int **token(char *str, char *program_name, int count)
 {
 	char **argv, *copy, *segment, *separat = " \n\t\r";
 	int num_seg = 0, ind = 0;
@@ -38,7 +40,7 @@ int **token(char *str)
 	}
 	argv[ind] = NULL;
 
-	execmd(argv);
+	execmd(argv, program_name, count);
 	/*printf("segment\n");*/
 	for (ind = 0; argv[ind]; ind++)
 	{

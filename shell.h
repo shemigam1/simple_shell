@@ -14,8 +14,8 @@ extern char **environ;
 extern int errno;
 
 void execution(char **argv, char *act);
-int **token(char *str);
-void execmd(char **argv);
+int **token(char *str, char *program, int count);
+void execmd(char **argv, char *program, int count);
 char *get_loc(char *cmd);
 char *str_cat(char *dest, char *src);
 int str_len(char *str);
