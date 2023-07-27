@@ -13,4 +13,4 @@ hsh main.c shell.c
 $
 
 if you have any suggestions please create a pull request
-git readm commite 
+git readm commite
