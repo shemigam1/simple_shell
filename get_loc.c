@@ -32,13 +32,10 @@ char *get_loc(char *cmd)
 		{
 			return (full_path);
 		}
-		free(full_path);
-
 		path_tok = strtok(NULL, ":");
 		free(full_path);
 	}
-	free(path);
-	free(path_tok);
+	exitcode = 127;
 
 	return (NULL);
 }

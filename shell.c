@@ -36,7 +36,12 @@ int main(int ac, char **av)
 			}
 			return (exitcode);
 		}
-
+		if (space[0] == 'e' && space[1] == 'x' &&
+			space[2] == 'i' && space[3] == 't')
+		{
+			free(space);
+			exit(exitcode);
+		}
 		token(space, av[0], count);
 	}
 	return (exitcode);
