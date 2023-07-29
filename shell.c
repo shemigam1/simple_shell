@@ -17,6 +17,7 @@ int main(int ac, char **av)
 {
 	char *space = NULL;
 	size_t buff = 0;
+	int line;
 	int count = 0;
 	(void)ac;
 
@@ -27,13 +28,20 @@ int main(int ac, char **av)
 		{
 			write(STDOUT_FILENO, "$ ", str_len("$ "));
 		}
-		if (getline(&space, &buff, stdin) == -1)
+		line = getline(&space, &buff, stdin);
+		if (line == -1)
 		{
-			free(space);
+			/*free(space);*/
 			if (isatty(STDIN_FILENO) == 1)
 			{
 				write(STDOUT_FILENO, "\n", str_len("\n"));
 			}
+			free(space);
+			return (exitcode);
+		}
+		if (strcmp(space, "exit\n") == 0)
+		{
+			free(space);
 			return (exitcode);
 		}
 

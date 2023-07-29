@@ -11,7 +11,7 @@
  * Return: ...
  */
 
-int **token(char *str, char *program_name, int count)
+void token(char *str, char *program_name, int count)
 {
 	char **argv, *copy, *segment, *separat = " \n\t\r";
 	int num_seg = 0, ind = 0;
@@ -48,5 +48,4 @@ int **token(char *str, char *program_name, int count)
 	}
 	free(copy);
 	free(argv);
-	return (0);
 }

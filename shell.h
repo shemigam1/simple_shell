@@ -14,7 +14,7 @@ extern char **environ;
 extern int exitcode;
 
 void execution(char **argv, char *act);
-int **token(char *str, char *program, int count);
+void token(char *str, char *program, int count);
 void execmd(char **argv, char *program, int count);
 char *get_loc(char *cmd);
 char *str_cat(char *dest, char *src);
