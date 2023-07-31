@@ -5,7 +5,7 @@
  * @argv: argument vector
  * @act: actual command
  *
- * Return: void
+ * Return: Void
  */
 
 void execution(char **argv, char *act)
